@@ -1,0 +1,40 @@
+.flash-box
+.wrapper
+  .chat-side
+    .side-header
+      %p.side-header__user-name user
+      %ul.user-menu
+        %li.user-menu__edit-user
+          =link_to("/chat-space") do
+            %i.fa.fa-edit
+        %li.user-menu__new-group
+          =link_to("/chat-space") do
+            %i.fa.fa-cog
+    .groups
+      =render partial: "group_table"
+  .chat-main
+    .main-header
+      .current-group
+        -# {data-group_id: ""}
+        %h2.current-group__name select-group
+        %ul.member-list
+          Member：
+          %li.member-list__member users
+      =link_to("/chat-space") do
+        .main-header__edit-btn
+          Edit
+    .messages
+      =render partial: "text"
+    .form
+      %form.new-message{"accept-charset" => "UFT-8", :action => "/", :enctype => "multipart/form-data", :method => "post"}
+        .input-box
+          %input.input-box__text{placeholder: "type a message", type: "text", name: "message[content]"}
+          %label.image-label{for: "message_image"}
+            %i.fa.fa-image
+            %input#message_image.image-label__input{type: "file", name: "message[image]"}
+        %input.new-message__submit-btn{type: "submit", name: "commit", value: "Send"}
+        
+      -# =form_tag.new-message(accept-charset: "UTF-8", action: "/groups/[:id]/messages", method: "post", enctype: "multipart/form-data")do
+        -# %input{name: "utf8", type: "hidden", value: "✓"}
+        -# %input{name: "authenticity_token", type: hidden, value: "<%= form_authenticity_token %>"}
+          -# , data-disable-with: "Send"
