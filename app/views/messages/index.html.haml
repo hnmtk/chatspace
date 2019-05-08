@@ -26,7 +26,7 @@
     .messages
       =render partial: "text"
     .form
-      %form.new-message{"accept-charset" => "UFT-8", :action => "/", :enctype => "multipart/form-data", :method => "post"}
+      %form.new-message{"accept-charset": "UFT-8", action: "/", enctype: "multipart/form-data", method: "post"}
         .input-box
           %input.input-box__text{placeholder: "type a message", type: "text", name: "message[content]"}
           %label.image-label{for: "message_image"}
