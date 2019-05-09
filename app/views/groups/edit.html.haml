@@ -1,12 +1,15 @@
 .chat-group-form
   %h1
     チャットグループ編集
-  =form_tag{class: "edit_chat_group", id: "edit_chat_group_22", action: "/chat_groups/22", accept:{charset: "UTF-8"} method: "post"}
-    .chat-group-form__errors
-      %h2
-        1件のエラーが発生しました。
-      %ul
-        %li エラーです
+  =form_for#edit_chat_group_22.edit_chat_group{"accept-charset": "UTF-8", action: "/chat_groups/22", method: "post"}
+    %input{name: "utf8", type: "hidden", value: "✓"}/
+    %input{name: "_method", type: "hidden", value: "patch"}/
+    %input{name: "authenticity_token", type: "hidden", value: "<%= form_authenticity_token %>"}
+    -# .chat-group-form__errors
+    -#   %h2
+    -#     1件のエラーが発生しました。
+    -#   %ul
+    -#     %li エラーです
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         %label.chat-group-form__label{for: "chat_group_name"} グループ名
@@ -27,4 +30,4 @@
       .chat-group-form__field--left
       .chat-group-form__field--right
         -# グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
-        %input{type: "submit", name: "commit", value: "Save" class: "chat-group-form__action-btn" data:{disable:{with: "Save"}}}
+        %input.chat-group-form__action-btn{type: "submit", name: "commit", value: "Save", "data-disable-with": "Save"}
