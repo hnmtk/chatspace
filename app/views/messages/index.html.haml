@@ -1,17 +1,5 @@
 .wrapper
-  .chat-side
-    .side-header
-      %p.side-header__user-name
-        = current_user.name
-      %ul.user-menu
-        %li.user-menu__edit-user
-          =link_to new_group_path do
-            %i.fa.fa-edit
-        %li.user-menu__new-group
-          =link_to edit_user_path(current_user) do
-            %i.fa.fa-cog
-    .groups
-      =render partial: "group_table"
+  = render partial: "groups/side_ber"
   .chat-main
     .main-header
       .current-group
@@ -20,21 +8,17 @@
         %ul.member-list
           Member：
           %li.member-list__member users
-      =link_to("/chat-space") do
+      =link_to("/group/[:group_id]/edit") do
         .main-header__edit-btn
           Edit
     .messages
-      =render partial: "text"
+      =render partial: "message", collection: @messages
     .form
-      %form.new-message{"accept-charset": "UFT-8", action: "/", enctype: "multipart/form-data", method: "post"}
+      = form_for [@group, @message] do |f|
         .input-box
-          %input.input-box__text{placeholder: "type a message", type: "text", name: "message[content]"}
-          %label.image-label{for: "message_image"}
-            %i.fa.fa-image
-            %input#message_image.image-label__input{type: "file", name: "message[image]"}
-        %input.new-message__submit-btn{type: "submit", name: "commit", value: "Send"}
+          = f.text_field :content, class: 'input-box__text', placeholder: "type a message"
+          = f.label :image, class: 'image-label' do
+            = fa_icon 'picture-o', class: 'fa-image'
+            = f.file_field :image, class: 'image-label__input'
+        = f.submit 'Send', class: 'new-message__submit-btn'
         
-      -# =form_tag.new-message(accept-charset: "UTF-8", action: "/groups/[:id]/messages", method: "post", enctype: "multipart/form-data")do
-        -# %input{name: "utf8", type: "hidden", value: "✓"}
-        -# %input{name: "authenticity_token", type: hidden, value: "<%= form_authenticity_token %>"}
-          -# , data-disable-with: "Send"
