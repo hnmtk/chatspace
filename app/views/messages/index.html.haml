@@ -3,13 +3,11 @@
   .chat-main
     .main-header
       .current-group
-        -# {data-group_id: ""}
         %h2.current-group__name 
           =@group.name
         %ul.member-list
           Member：
-          %li.member-list__member 
-            -# @group.user.name
+          =render 'member', collection: @members
       =link_to("/groups/#{@group[:id]}/edit") do
         .main-header__edit-btn
           Edit
