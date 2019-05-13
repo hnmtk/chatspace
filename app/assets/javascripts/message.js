@@ -49,6 +49,7 @@ $(function(){
     })
     .fail(function(){
       alert('error');
+      $('.new_message__submit-btn').attr('disabled', false);
     })
   })
 })
