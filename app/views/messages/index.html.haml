@@ -3,12 +3,12 @@
   .chat-main
     .main-header
       .current-group
-        -# {data-group_id: ""}
-        %h2.current-group__name select-group
+        %h2.current-group__name 
+          =@group.name
         %ul.member-list
           Member：
-          %li.member-list__member users
-      =link_to("/group/[:group_id]/edit") do
+          =render 'member', collection: @members
+      =link_to edit_group_path(@group) do
         .main-header__edit-btn
           Edit
     .messages
@@ -20,5 +20,5 @@
           = f.label :image, class: 'image-label' do
             = fa_icon 'picture-o', class: 'fa-image'
             = f.file_field :image, class: 'image-label__input'
-        = f.submit 'Send', class: 'new-message__submit-btn'
+        = f.submit 'Send', class: 'new_message__submit-btn'
         

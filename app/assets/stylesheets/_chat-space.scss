@@ -78,6 +78,7 @@
           float: left;
           &__member {
             float: right;
+            padding-right: 4px;
           }
         }
       }
@@ -129,7 +130,7 @@
       background-color: lightgray;
       height: 50px;
       padding: 20px 40px;
-      .new-message {
+      .new_message {
         height: 50px;
         &__submit-btn{
           width: 100px;
