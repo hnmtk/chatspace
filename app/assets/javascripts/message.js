@@ -38,8 +38,7 @@ $(function(){
       $('.messages').append(html);
       $('.input-box').val('');
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-      $('.input-box__text').val('')
-      $('.image-label__input').val('')
+      $('.new_message')[0].reset()
       $('.new_message__submit-btn').attr('disabled', false);
     })
     .fail(function(){
