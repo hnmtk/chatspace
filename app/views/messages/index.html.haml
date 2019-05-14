@@ -8,7 +8,7 @@
         %ul.member-list
           Member：
           =render 'member', collection: @members
-      =link_to("/groups/#{@group[:id]}/edit") do
+      =link_to edit_group_path(@group) do
         .main-header__edit-btn
           Edit
     .messages
