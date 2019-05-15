@@ -49,7 +49,6 @@ $(function(){
     $(this).parent().remove();
     var userName = $(this).data('user-name');
     var userId   = $(this).data('user-id');
-    console.log(userName, userId);
     changeUser(userName, userId);
   });
   $(document).on("click", ".chat-group-user__btn--remove", function(){
