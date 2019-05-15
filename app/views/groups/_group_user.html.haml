@@ -1,0 +1,6 @@
+= f.collection_check_boxes(:user_ids, users, :id, :name) do |user|
+  #chat-group-user-8.chat-group-user.clearfix.js-chat-member
+    %input{name: 'group[user_ids][]', type: 'hidden', value: "#{user.object.id}"}
+    %p.chat-group-user__name
+      =user.object.name
+    .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
