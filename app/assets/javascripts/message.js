@@ -55,7 +55,6 @@ $(function(){
     })
 
     .done(function(messages){
-      console.log(messages);
       messages.forEach(function(message){
         if (message.id > last_message_id ){
           var insertHTML = '';
@@ -66,8 +65,7 @@ $(function(){
       })
     })
     .fail(function(){
-      console.log('t')
-      // alert('error');
+      alert('error');
     });
   };
   setInterval(reloadMessages, 5000);
