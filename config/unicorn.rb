@@ -42,5 +42,5 @@ after_fork do |_server, _worker|
 end
 
 before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = @app_path + "/current/Gemfile"
+  ENV['BUNDLE_GEMFILE'] = "/var/www/chatspace/current/Gemfile"
 end
